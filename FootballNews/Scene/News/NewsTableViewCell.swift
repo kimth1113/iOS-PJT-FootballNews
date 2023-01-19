@@ -26,7 +26,8 @@ class NewsTableViewCell: BaseTableViewCell {
 //
     override func configureUI() {
 
-//        selectionStyle = .none
+        selectionStyle = .none
+        
         [cellBackgroundView].forEach {
             addSubview($0)
         }

@@ -15,7 +15,7 @@ extension UITabBarController {
         case nav
     }
     
-    func tabBarResultController(_ vc: UIViewController, vcType: VCSType, baseImg: UIImage?, selectedImg: UIImage?) -> UIViewController {
+    func tabBarResultController(_ vc: UIViewController, vcType: VCSType, title: String, baseImg: UIImage?, selectedImg: UIImage?) -> UIViewController {
         
         let resultController: UIViewController?
         
@@ -28,6 +28,7 @@ extension UITabBarController {
         
         resultController?.tabBarItem.image = baseImg
         resultController?.tabBarItem.selectedImage = selectedImg
+        resultController?.tabBarItem.title = title
         
         return resultController!
     }
