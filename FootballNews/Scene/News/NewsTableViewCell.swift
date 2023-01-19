@@ -6,14 +6,30 @@
 //
 
 import UIKit
+import SnapKit
 
 class NewsTableViewCell: BaseTableViewCell {
     
-    override func configureUI() {
-        
-    }
+//    let title: UILabel = {
+//        let view = UILabel()
+//        view.text = "dldldldldl"
+//        view.backgroundColor = .red
+//        return view
+//    }()
+//
+//    override func configureUI() {
+//
+//        [title].forEach {
+//            addSubview($0)
+//        }
+//    }
+//
+//    override func setConstraints() {
+//
+//        title.snp.makeConstraints { make in
+//            make.top.equalTo(self)
+//        }
+//
+//    }
     
-    override func setConstraints() {
-        
-    }
 }

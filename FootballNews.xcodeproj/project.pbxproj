@@ -23,6 +23,11 @@
 		8C8DBC7F2975B8D0007895E3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8C8DBC7E2975B8D0007895E3 /* SnapKit */; };
 		8C8DBC852975C24D007895E3 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DBC842975C24D007895E3 /* BaseTableViewCell.swift */; };
 		8C8DBC872975C2F2007895E3 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DBC862975C2F2007895E3 /* NewsTableViewCell.swift */; };
+		8C8DBC89297688EA007895E3 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DBC88297688EA007895E3 /* ReusableProtocol.swift */; };
+		8C8DBC8C2976A539007895E3 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 8C8DBC8B2976A539007895E3 /* RxDataSources */; };
+		8C8DBC8F2976DB7A007895E3 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 8C8DBC8E2976DB7A007895E3 /* SwiftSoup */; };
+		8CB9DD1D2978C35B0012713B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB9DD1C2978C35B0012713B /* News.swift */; };
+		8CB9DD222978FAC50012713B /* OpenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB9DD212978FAC50012713B /* OpenWebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +45,9 @@
 		8C8DBC7B2975B88E007895E3 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		8C8DBC842975C24D007895E3 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		8C8DBC862975C2F2007895E3 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		8C8DBC88297688EA007895E3 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		8CB9DD1C2978C35B0012713B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		8CB9DD212978FAC50012713B /* OpenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +58,9 @@
 				8C8DBC7A2975B6D6007895E3 /* RxAlamofire in Frameworks */,
 				8C8DBC7F2975B8D0007895E3 /* SnapKit in Frameworks */,
 				8C8DBC772975B6B9007895E3 /* RxSwift in Frameworks */,
+				8C8DBC8C2976A539007895E3 /* RxDataSources in Frameworks */,
 				8C8DBC752975B6B9007895E3 /* RxCocoa in Frameworks */,
+				8C8DBC8F2976DB7A007895E3 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +86,7 @@
 		8C8DBC522975B429007895E3 /* FootballNews */ = {
 			isa = PBXGroup;
 			children = (
+				8C8DBC902978C226007895E3 /* Model */,
 				8C8DBC6D2975B514007895E3 /* Utility */,
 				8C8DBC672975B4B2007895E3 /* Scene */,
 				8C8DBC532975B429007895E3 /* AppDelegate.swift */,
@@ -84,6 +95,7 @@
 				8C8DBC5C2975B429007895E3 /* Assets.xcassets */,
 				8C8DBC5E2975B429007895E3 /* LaunchScreen.storyboard */,
 				8C8DBC612975B429007895E3 /* Info.plist */,
+				8C8DBC88297688EA007895E3 /* ReusableProtocol.swift */,
 			);
 			path = FootballNews;
 			sourceTree = "<group>";
@@ -111,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				8C8DBC6E2975B543007895E3 /* BaseView */,
+				8CB9DD212978FAC50012713B /* OpenWebView.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -123,6 +136,14 @@
 				8C8DBC842975C24D007895E3 /* BaseTableViewCell.swift */,
 			);
 			path = BaseView;
+			sourceTree = "<group>";
+		};
+		8C8DBC902978C226007895E3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8CB9DD1C2978C35B0012713B /* News.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +167,8 @@
 				8C8DBC762975B6B9007895E3 /* RxSwift */,
 				8C8DBC792975B6D6007895E3 /* RxAlamofire */,
 				8C8DBC7E2975B8D0007895E3 /* SnapKit */,
+				8C8DBC8B2976A539007895E3 /* RxDataSources */,
+				8C8DBC8E2976DB7A007895E3 /* SwiftSoup */,
 			);
 			productName = FootballNews;
 			productReference = 8C8DBC502975B429007895E3 /* FootballNews.app */;
@@ -179,6 +202,8 @@
 				8C8DBC732975B6B9007895E3 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				8C8DBC782975B6D6007895E3 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 				8C8DBC7D2975B8D0007895E3 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8C8DBC8A2976A539007895E3 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				8C8DBC8D2976DB7A007895E3 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 8C8DBC512975B429007895E3 /* Products */;
 			projectDirPath = "";
@@ -209,9 +234,12 @@
 			files = (
 				8C8DBC852975C24D007895E3 /* BaseTableViewCell.swift in Sources */,
 				8C8DBC7C2975B88E007895E3 /* NewsView.swift in Sources */,
+				8C8DBC89297688EA007895E3 /* ReusableProtocol.swift in Sources */,
+				8CB9DD222978FAC50012713B /* OpenWebView.swift in Sources */,
 				8C8DBC542975B429007895E3 /* AppDelegate.swift in Sources */,
 				8C8DBC6C2975B4DE007895E3 /* NewsViewModel.swift in Sources */,
 				8C8DBC562975B429007895E3 /* SceneDelegate.swift in Sources */,
+				8CB9DD1D2978C35B0012713B /* News.swift in Sources */,
 				8C8DBC722975B5AA007895E3 /* BaseView.swift in Sources */,
 				8C8DBC6A2975B4D4007895E3 /* NewsViewController.swift in Sources */,
 				8C8DBC702975B55B007895E3 /* BaseViewController.swift in Sources */,
@@ -467,6 +495,22 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		8C8DBC8A2976A539007895E3 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		8C8DBC8D2976DB7A007895E3 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -489,6 +533,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8C8DBC7D2975B8D0007895E3 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		8C8DBC8B2976A539007895E3 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C8DBC8A2976A539007895E3 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
+		8C8DBC8E2976DB7A007895E3 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C8DBC8D2976DB7A007895E3 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

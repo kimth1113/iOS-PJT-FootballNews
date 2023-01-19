@@ -12,6 +12,8 @@ class NewsView: BaseView {
     
     let newsTableView: UITableView = {
         let view = UITableView()
+//        view.rowHeight = 40
+        view.backgroundColor = .yellow
         return view
     }()
     
@@ -23,8 +25,10 @@ class NewsView: BaseView {
     }
     
     override func setConstraint() {
+        
         newsTableView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }
+        
     }
 }
