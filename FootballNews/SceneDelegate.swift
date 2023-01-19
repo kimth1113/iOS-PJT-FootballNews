@@ -16,13 +16,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-                    
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: NewsViewController.reuseIdentifier) as! NewsViewController
-    
-        window?.rootViewController = UINavigationController(rootViewController: vc)
         
+        let viewController = TabBarController()
+//        let navigationController = UINavigationController(rootViewController: viewController)
+        window?.rootViewController = viewController
         window?.makeKeyAndVisible()
+        
+//        guard let scene = (scene as? UIWindowScene) else { return }
+//        window = UIWindow(windowScene: scene)
+//
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = sb.instantiateViewController(withIdentifier: NewsViewController.reuseIdentifier) as! NewsViewController
+//
+//        window?.rootViewController = UINavigationController(rootViewController: vc)
+//
+//        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
