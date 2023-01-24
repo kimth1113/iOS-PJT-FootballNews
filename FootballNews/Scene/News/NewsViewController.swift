@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RxAlamofire
 import RxCocoa
 import RxSwift
 import SafariServices
@@ -42,7 +41,7 @@ class NewsViewController: BaseViewController {
     
     func bind() {
         
-        let input = NewsViewModel.Input(select: mainView.newsTableView.rx.modelSelected(News.self))
+        let input = NewsViewModel.Input(selectCell: mainView.newsTableView.rx.modelSelected(News.self))
         let output = viewModel.transform(input: input)
         
         viewModel.newsList
@@ -52,7 +51,7 @@ class NewsViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        output.select
+        output.selectCell
             .withUnretained(self)
             .subscribe { (vc, news) in
                 let safariViewController = SFSafariViewController(url: news.url)

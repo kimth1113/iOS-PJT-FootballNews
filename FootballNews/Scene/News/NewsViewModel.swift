@@ -14,24 +14,24 @@ class NewsViewModel {
     
     let newsList = PublishSubject<[News]>()
     
-    let disposeBag = DisposeBag()
-    
     struct Input {
-        let select: ControlEvent<News>
+        let selectCell: ControlEvent<News>
     }
     
     struct Output {
-        let select: ControlEvent<News>
+        let selectCell: ControlEvent<News>
     }
     
     func transform(input: Input) -> Output {
         
-        return Output(select: input.select)
+        return Output(selectCell: input.selectCell)
     }
     
     func getNews() {
         
-        let url = FootballAPI.newsBase.url
+        DispatchQueue.global().async { [self] in
+            
+            let url = FootballAPI.newsBase.url
             do {
                 let html = try String(contentsOf: url, encoding: .utf8)
                 let doc: Document = try SwiftSoup.parse(html)
@@ -43,8 +43,8 @@ class NewsViewModel {
                 var list: [News] = []
                 for element in newsInfoList.array() {
                     let title = try element.select("span").text()
-                    let urlString = "https://sports.news.naver.com" + (try element.attr("href").description)
-                    list.append(News(title: title, url: URL(string: urlString)!))
+                    let url = FootballAPI.news(urlString: try element.attr("href").description).url
+                    list.append(News(title: title, url: url))
                 }
                 
                 newsList.onNext(list)
@@ -52,5 +52,7 @@ class NewsViewModel {
             } catch let error {
                 print("error: ---- \(error)")
             }
+        }
+        
     }
 }

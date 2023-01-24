@@ -32,4 +32,8 @@ extension UITabBarController {
         
         return resultController!
     }
+    
+    func getRank() {
+        
+    }
 }

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C107F43297DE382008756B2 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F42297DE382008756B2 /* Rank.swift */; };
+		8C107F45297EE290008756B2 /* RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F44297EE290008756B2 /* RankTableViewCell.swift */; };
+		8C107F47297EE305008756B2 /* RankCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F46297EE305008756B2 /* RankCellView.swift */; };
+		8C107F4A297EF739008756B2 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F49297EF739008756B2 /* PlanViewController.swift */; };
+		8C107F4C297EF761008756B2 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F4B297EF761008756B2 /* PlanView.swift */; };
+		8C107F52297F6807008756B2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 8C107F51297F6807008756B2 /* SwiftyJSON */; };
+		8C107F5429806D79008756B2 /* PlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F5329806D79008756B2 /* PlanViewModel.swift */; };
 		8C8DBC542975B429007895E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DBC532975B429007895E3 /* AppDelegate.swift */; };
 		8C8DBC562975B429007895E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DBC552975B429007895E3 /* SceneDelegate.swift */; };
 		8C8DBC5B2975B429007895E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C8DBC592975B429007895E3 /* Main.storyboard */; };
@@ -31,9 +38,16 @@
 		8CB9DD2F2979AB870012713B /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB9DD2E2979AB870012713B /* RankViewController.swift */; };
 		8CB9DD322979ABBE0012713B /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB9DD312979ABBE0012713B /* RankView.swift */; };
 		8CB9DD3A2979B35C0012713B /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 8CB9DD392979B35C0012713B /* RxDataSources */; };
+		8CB9DD3C297A96A30012713B /* RankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB9DD3B297A96A30012713B /* RankViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C107F42297DE382008756B2 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		8C107F44297EE290008756B2 /* RankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankTableViewCell.swift; sourceTree = "<group>"; };
+		8C107F46297EE305008756B2 /* RankCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankCellView.swift; sourceTree = "<group>"; };
+		8C107F49297EF739008756B2 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
+		8C107F4B297EF761008756B2 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
+		8C107F5329806D79008756B2 /* PlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewModel.swift; sourceTree = "<group>"; };
 		8C8DBC502975B429007895E3 /* FootballNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootballNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8DBC532975B429007895E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C8DBC552975B429007895E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +69,7 @@
 		8CB9DD2C2979A6B20012713B /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		8CB9DD2E2979AB870012713B /* RankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		8CB9DD312979ABBE0012713B /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
+		8CB9DD3B297A96A30012713B /* RankViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C107F52297F6807008756B2 /* SwiftyJSON in Frameworks */,
 				8C8DBC7F2975B8D0007895E3 /* SnapKit in Frameworks */,
 				8C8DBC772975B6B9007895E3 /* RxSwift in Frameworks */,
 				8C8DBC752975B6B9007895E3 /* RxCocoa in Frameworks */,
@@ -73,6 +89,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C107F48297EF71B008756B2 /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				8C107F49297EF739008756B2 /* PlanViewController.swift */,
+				8C107F4B297EF761008756B2 /* PlanView.swift */,
+				8C107F5329806D79008756B2 /* PlanViewModel.swift */,
+			);
+			path = Plan;
+			sourceTree = "<group>";
+		};
 		8C8DBC472975B429007895E3 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +137,7 @@
 		8C8DBC672975B4B2007895E3 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				8C107F48297EF71B008756B2 /* Plan */,
 				8CB9DD2329797F330012713B /* TabBar */,
 				8C8DBC682975B4C1007895E3 /* News */,
 				8CB9DD302979AB970012713B /* Rank */,
@@ -151,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				8CB9DD1C2978C35B0012713B /* News.swift */,
+				8C107F42297DE382008756B2 /* Rank.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,8 +210,11 @@
 		8CB9DD302979AB970012713B /* Rank */ = {
 			isa = PBXGroup;
 			children = (
+				8C107F44297EE290008756B2 /* RankTableViewCell.swift */,
+				8C107F46297EE305008756B2 /* RankCellView.swift */,
 				8CB9DD2E2979AB870012713B /* RankViewController.swift */,
 				8CB9DD312979ABBE0012713B /* RankView.swift */,
+				8CB9DD3B297A96A30012713B /* RankViewModel.swift */,
 			);
 			path = Rank;
 			sourceTree = "<group>";
@@ -210,6 +241,7 @@
 				8C8DBC7E2975B8D0007895E3 /* SnapKit */,
 				8C8DBC8E2976DB7A007895E3 /* SwiftSoup */,
 				8CB9DD392979B35C0012713B /* RxDataSources */,
+				8C107F51297F6807008756B2 /* SwiftyJSON */,
 			);
 			productName = FootballNews;
 			productReference = 8C8DBC502975B429007895E3 /* FootballNews.app */;
@@ -244,6 +276,7 @@
 				8C8DBC7D2975B8D0007895E3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8C8DBC8D2976DB7A007895E3 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				8CB9DD382979B35C0012713B /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				8C107F50297F6807008756B2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 8C8DBC512975B429007895E3 /* Products */;
 			projectDirPath = "";
@@ -273,19 +306,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CB9DD322979ABBE0012713B /* RankView.swift in Sources */,
+				8C107F45297EE290008756B2 /* RankTableViewCell.swift in Sources */,
 				8C8DBC852975C24D007895E3 /* BaseTableViewCell.swift in Sources */,
 				8CB9DD2729797FFD0012713B /* TabBarController.swift in Sources */,
 				8CB9DD2A297980FC0012713B /* TabBarController+Extension.swift in Sources */,
 				8CB9DD2F2979AB870012713B /* RankViewController.swift in Sources */,
 				8C8DBC7C2975B88E007895E3 /* NewsView.swift in Sources */,
+				8C107F4C297EF761008756B2 /* PlanView.swift in Sources */,
 				8C8DBC89297688EA007895E3 /* ReusableProtocol.swift in Sources */,
 				8C8DBC542975B429007895E3 /* AppDelegate.swift in Sources */,
+				8CB9DD3C297A96A30012713B /* RankViewModel.swift in Sources */,
 				8C8DBC6C2975B4DE007895E3 /* NewsViewModel.swift in Sources */,
+				8C107F5429806D79008756B2 /* PlanViewModel.swift in Sources */,
 				8C8DBC562975B429007895E3 /* SceneDelegate.swift in Sources */,
+				8C107F47297EE305008756B2 /* RankCellView.swift in Sources */,
 				8CB9DD1D2978C35B0012713B /* News.swift in Sources */,
 				8C8DBC722975B5AA007895E3 /* BaseView.swift in Sources */,
 				8C8DBC6A2975B4D4007895E3 /* NewsViewController.swift in Sources */,
 				8C8DBC702975B55B007895E3 /* BaseViewController.swift in Sources */,
+				8C107F4A297EF739008756B2 /* PlanViewController.swift in Sources */,
+				8C107F43297DE382008756B2 /* Rank.swift in Sources */,
 				8CB9DD2D2979A6B20012713B /* EndPoint.swift in Sources */,
 				8C8DBC872975C2F2007895E3 /* NewsTableViewCell.swift in Sources */,
 			);
@@ -515,6 +555,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8C107F50297F6807008756B2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		8C8DBC732975B6B9007895E3 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -550,6 +598,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8C107F51297F6807008756B2 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C107F50297F6807008756B2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
 		8C8DBC742975B6B9007895E3 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8C8DBC732975B6B9007895E3 /* XCRemoteSwiftPackageReference "RxSwift" */;
