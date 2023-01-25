@@ -12,8 +12,8 @@
 		8C107F47297EE305008756B2 /* RankCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F46297EE305008756B2 /* RankCellView.swift */; };
 		8C107F4A297EF739008756B2 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F49297EF739008756B2 /* PlanViewController.swift */; };
 		8C107F4C297EF761008756B2 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F4B297EF761008756B2 /* PlanView.swift */; };
-		8C107F52297F6807008756B2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 8C107F51297F6807008756B2 /* SwiftyJSON */; };
 		8C107F5429806D79008756B2 /* PlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F5329806D79008756B2 /* PlanViewModel.swift */; };
+		8C107F562980AB4D008756B2 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F552980AB4D008756B2 /* Match.swift */; };
 		8C8DBC542975B429007895E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DBC532975B429007895E3 /* AppDelegate.swift */; };
 		8C8DBC562975B429007895E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DBC552975B429007895E3 /* SceneDelegate.swift */; };
 		8C8DBC5B2975B429007895E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C8DBC592975B429007895E3 /* Main.storyboard */; };
@@ -48,6 +48,7 @@
 		8C107F49297EF739008756B2 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
 		8C107F4B297EF761008756B2 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		8C107F5329806D79008756B2 /* PlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewModel.swift; sourceTree = "<group>"; };
+		8C107F552980AB4D008756B2 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		8C8DBC502975B429007895E3 /* FootballNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootballNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8DBC532975B429007895E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C8DBC552975B429007895E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C107F52297F6807008756B2 /* SwiftyJSON in Frameworks */,
 				8C8DBC7F2975B8D0007895E3 /* SnapKit in Frameworks */,
 				8C8DBC772975B6B9007895E3 /* RxSwift in Frameworks */,
 				8C8DBC752975B6B9007895E3 /* RxCocoa in Frameworks */,
@@ -179,6 +179,7 @@
 			children = (
 				8CB9DD1C2978C35B0012713B /* News.swift */,
 				8C107F42297DE382008756B2 /* Rank.swift */,
+				8C107F552980AB4D008756B2 /* Match.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -241,7 +242,6 @@
 				8C8DBC7E2975B8D0007895E3 /* SnapKit */,
 				8C8DBC8E2976DB7A007895E3 /* SwiftSoup */,
 				8CB9DD392979B35C0012713B /* RxDataSources */,
-				8C107F51297F6807008756B2 /* SwiftyJSON */,
 			);
 			productName = FootballNews;
 			productReference = 8C8DBC502975B429007895E3 /* FootballNews.app */;
@@ -276,7 +276,6 @@
 				8C8DBC7D2975B8D0007895E3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8C8DBC8D2976DB7A007895E3 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				8CB9DD382979B35C0012713B /* XCRemoteSwiftPackageReference "RxDataSources" */,
-				8C107F50297F6807008756B2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 8C8DBC512975B429007895E3 /* Products */;
 			projectDirPath = "";
@@ -316,6 +315,7 @@
 				8C8DBC89297688EA007895E3 /* ReusableProtocol.swift in Sources */,
 				8C8DBC542975B429007895E3 /* AppDelegate.swift in Sources */,
 				8CB9DD3C297A96A30012713B /* RankViewModel.swift in Sources */,
+				8C107F562980AB4D008756B2 /* Match.swift in Sources */,
 				8C8DBC6C2975B4DE007895E3 /* NewsViewModel.swift in Sources */,
 				8C107F5429806D79008756B2 /* PlanViewModel.swift in Sources */,
 				8C8DBC562975B429007895E3 /* SceneDelegate.swift in Sources */,
@@ -555,14 +555,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8C107F50297F6807008756B2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		8C8DBC732975B6B9007895E3 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -598,11 +590,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8C107F51297F6807008756B2 /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8C107F50297F6807008756B2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
-		};
 		8C8DBC742975B6B9007895E3 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8C8DBC732975B6B9007895E3 /* XCRemoteSwiftPackageReference "RxSwift" */;

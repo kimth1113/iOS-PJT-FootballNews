@@ -12,16 +12,21 @@ class PlanView: BaseView {
     
     let planTableView: UITableView = {
         let view = UITableView()
-        
         return view
     }()
     
     override func configureUI() {
         
+        [planTableView].forEach {
+            addSubview($0)
+        }
     }
     
     override func setConstraint() {
         
+        planTableView.snp.makeConstraints { make in
+            make.edges.equalTo(safeAreaLayoutGuide)
+        }
     }
 }
 

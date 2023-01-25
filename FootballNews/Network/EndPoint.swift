@@ -19,8 +19,8 @@ enum FootballAPI {
     
     case newsBase
     case news(urlString: String)
-    case rankBase
     case rank(league: League)
+    case plan(league: String, date: [String])
 }
 
 extension FootballAPI {
@@ -31,6 +31,8 @@ extension FootballAPI {
             return "https://sports.news.naver.com"
         case .rank:
             return "https://www.goal.com/kr/"
+        case .plan:
+            return "https://sports.news.naver.com/wfootball/schedule/index?"
         default:
             return ""
         }
@@ -43,10 +45,11 @@ extension FootballAPI {
             return URL(string: "https://sports.news.naver.com/wfootball/index")!
         case .news(let urlString):
             return URL(string: baseURLString + urlString)!
-        case .rankBase:
-            return URL(string: "")!
         case .rank(let league):
             let urlString = (baseURLString + league.rawValue).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            return URL(string: urlString)!
+        case .plan(let league, let date):
+            let urlString = (baseURLString + "year=\(date[0])&month=\(date[1])&category=\(league)&date=\(date[0])\(date[1])\(date[2])")
             return URL(string: urlString)!
         }
     }

@@ -7,15 +7,32 @@
 
 import UIKit
 import RxCocoa
+import RxDataSources
 import RxSwift
 import SwiftSoup
-import SwiftyJSON
 
 class PlanViewController: BaseViewController {
     
     let mainView = PlanView()
     
+    let viewModel = PlanViewModel()
+    
     let disposeBag = DisposeBag()
+    
+    lazy var dataSource = RxTableViewSectionedReloadDataSource<MatchSection> { dataSource, tableView, indexPath, item in
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
+            return UITableViewCell()
+        }
+        
+        if item.categoryName == "경기없음" {
+            cell.textLabel?.text = "경기없음"
+        } else {
+            cell.textLabel?.text = "\(item.homeTeamName!) vs \(item.awayTeamName!)"
+        }
+        
+        return cell
+    }
     
     override func loadView() {
         super.loadView()
@@ -26,8 +43,10 @@ class PlanViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getRank()
+        viewModel.getPlan(date: ["2023", "01", "25"])
         designNavigationBar()
+        
+        planTableViewConfigure()
     }
     
     private func designNavigationBar() {
@@ -61,63 +80,16 @@ class PlanViewController: BaseViewController {
         
     }
     
-    func getRank() {
-        
-        DispatchQueue.global().async { [self] in
+    func planTableViewConfigure() {
+        mainView.planTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
-            let url = URL(string: "https://sports.news.naver.com/wfootball/schedule/index?year=2023&month=05&category=epl&date=20230507")!
-            do {
-                let html = try String(contentsOf: url, encoding: .utf8)
-                let doc: Document = try SwiftSoup.parse(html)
-                
-                let scriptTags = try! doc.select("script")
-                var jsonString: String?
-                for tag: Element in scriptTags {
-                    for  node : DataNode in tag.dataNodes() {
-                        let myText = node.getWholeData()
-//                        print (node.getWholeData())
-                        let p = Pattern.compile("\\[(.*?)\\]")
-                        let m: Matcher = p.matcher(in: myText)
-                        while( m.find() )
-                        {
-                            let json = m.group()
-                            if json!.contains("2023-05-07") {
-                                jsonString = json
-                                break
-                            }
-                        }
-                    }
-                }
-                
-//                print(jsonString)
-                var stringArray = ""
-                for word in jsonString ?? "" {
-                    if word == "{" {
-                        stringArray = ""
-                        stringArray += String(word)
-                    } else if word == "}" {
-                        stringArray += String(word)
-//                        print(stringArray)
-
-                        var dicData : Dictionary<String, Any> = [String : Any]()
-                        do {
-                            // 딕셔너리에 데이터 저장 실시
-                            dicData = try JSONSerialization.jsonObject(with: Data(stringArray.utf8), options: []) as! [String:Any]
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-
-                        print(dicData["homeTeamName"]!, "vs", dicData["awayTeamName"]!)
-                    } else if word != "[" && word != "]" {
-                        stringArray += String(word)
-                    }
-                }
-                
-                
-
-            } catch let error {
-                print("error: ---- \(error)")
-            }
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            return dataSource.sectionModels[index].header
         }
+        
+        viewModel.sections
+            .bind(to: mainView.planTableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
     }
 }
