@@ -14,6 +14,15 @@
 		8C107F4C297EF761008756B2 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F4B297EF761008756B2 /* PlanView.swift */; };
 		8C107F5429806D79008756B2 /* PlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F5329806D79008756B2 /* PlanViewModel.swift */; };
 		8C107F562980AB4D008756B2 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F552980AB4D008756B2 /* Match.swift */; };
+		8C107F592980F726008756B2 /* CupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F582980F726008756B2 /* CupViewController.swift */; };
+		8C107F5B2980F80C008756B2 /* CupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F5A2980F80C008756B2 /* CupView.swift */; };
+		8C107F5D2981076C008756B2 /* Contest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F5C2981076C008756B2 /* Contest.swift */; };
+		8C107F60298109E7008756B2 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 8C107F5F298109E7008756B2 /* Toast */; };
+		8C107F62298109F0008756B2 /* CupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F61298109F0008756B2 /* CupViewModel.swift */; };
+		8C107F6429823A14008756B2 /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F6329823A14008756B2 /* PlanTableViewCell.swift */; };
+		8C107F6629836294008756B2 /* NoPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F6529836294008756B2 /* NoPlanTableViewCell.swift */; };
+		8C107F692983681E008756B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8C107F682983681E008756B2 /* Kingfisher */; };
+		8C107F6F2983B43F008756B2 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 8C107F6E2983B43F008756B2 /* GoogleMobileAds */; };
 		8C8DBC542975B429007895E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DBC532975B429007895E3 /* AppDelegate.swift */; };
 		8C8DBC562975B429007895E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DBC552975B429007895E3 /* SceneDelegate.swift */; };
 		8C8DBC5B2975B429007895E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C8DBC592975B429007895E3 /* Main.storyboard */; };
@@ -49,6 +58,12 @@
 		8C107F4B297EF761008756B2 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		8C107F5329806D79008756B2 /* PlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewModel.swift; sourceTree = "<group>"; };
 		8C107F552980AB4D008756B2 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		8C107F582980F726008756B2 /* CupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupViewController.swift; sourceTree = "<group>"; };
+		8C107F5A2980F80C008756B2 /* CupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupView.swift; sourceTree = "<group>"; };
+		8C107F5C2981076C008756B2 /* Contest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contest.swift; sourceTree = "<group>"; };
+		8C107F61298109F0008756B2 /* CupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupViewModel.swift; sourceTree = "<group>"; };
+		8C107F6329823A14008756B2 /* PlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
+		8C107F6529836294008756B2 /* NoPlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPlanTableViewCell.swift; sourceTree = "<group>"; };
 		8C8DBC502975B429007895E3 /* FootballNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootballNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8DBC532975B429007895E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C8DBC552975B429007895E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,8 +93,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C107F60298109E7008756B2 /* Toast in Frameworks */,
 				8C8DBC7F2975B8D0007895E3 /* SnapKit in Frameworks */,
+				8C107F692983681E008756B2 /* Kingfisher in Frameworks */,
 				8C8DBC772975B6B9007895E3 /* RxSwift in Frameworks */,
+				8C107F6F2983B43F008756B2 /* GoogleMobileAds in Frameworks */,
 				8C8DBC752975B6B9007895E3 /* RxCocoa in Frameworks */,
 				8CB9DD3A2979B35C0012713B /* RxDataSources in Frameworks */,
 				8C8DBC8F2976DB7A007895E3 /* SwiftSoup in Frameworks */,
@@ -92,11 +110,23 @@
 		8C107F48297EF71B008756B2 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
+				8C107F6529836294008756B2 /* NoPlanTableViewCell.swift */,
 				8C107F49297EF739008756B2 /* PlanViewController.swift */,
 				8C107F4B297EF761008756B2 /* PlanView.swift */,
 				8C107F5329806D79008756B2 /* PlanViewModel.swift */,
+				8C107F6329823A14008756B2 /* PlanTableViewCell.swift */,
 			);
 			path = Plan;
+			sourceTree = "<group>";
+		};
+		8C107F572980F707008756B2 /* Cup */ = {
+			isa = PBXGroup;
+			children = (
+				8C107F582980F726008756B2 /* CupViewController.swift */,
+				8C107F61298109F0008756B2 /* CupViewModel.swift */,
+				8C107F5A2980F80C008756B2 /* CupView.swift */,
+			);
+			path = Cup;
 			sourceTree = "<group>";
 		};
 		8C8DBC472975B429007895E3 = {
@@ -137,6 +167,7 @@
 		8C8DBC672975B4B2007895E3 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				8C107F572980F707008756B2 /* Cup */,
 				8C107F48297EF71B008756B2 /* Plan */,
 				8CB9DD2329797F330012713B /* TabBar */,
 				8C8DBC682975B4C1007895E3 /* News */,
@@ -180,6 +211,7 @@
 				8CB9DD1C2978C35B0012713B /* News.swift */,
 				8C107F42297DE382008756B2 /* Rank.swift */,
 				8C107F552980AB4D008756B2 /* Match.swift */,
+				8C107F5C2981076C008756B2 /* Contest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,6 +274,9 @@
 				8C8DBC7E2975B8D0007895E3 /* SnapKit */,
 				8C8DBC8E2976DB7A007895E3 /* SwiftSoup */,
 				8CB9DD392979B35C0012713B /* RxDataSources */,
+				8C107F5F298109E7008756B2 /* Toast */,
+				8C107F682983681E008756B2 /* Kingfisher */,
+				8C107F6E2983B43F008756B2 /* GoogleMobileAds */,
 			);
 			productName = FootballNews;
 			productReference = 8C8DBC502975B429007895E3 /* FootballNews.app */;
@@ -276,6 +311,9 @@
 				8C8DBC7D2975B8D0007895E3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8C8DBC8D2976DB7A007895E3 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				8CB9DD382979B35C0012713B /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				8C107F5E298109E7008756B2 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				8C107F672983681E008756B2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				8C107F6D2983B43F008756B2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 8C8DBC512975B429007895E3 /* Products */;
 			projectDirPath = "";
@@ -305,15 +343,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CB9DD322979ABBE0012713B /* RankView.swift in Sources */,
+				8C107F5B2980F80C008756B2 /* CupView.swift in Sources */,
 				8C107F45297EE290008756B2 /* RankTableViewCell.swift in Sources */,
 				8C8DBC852975C24D007895E3 /* BaseTableViewCell.swift in Sources */,
 				8CB9DD2729797FFD0012713B /* TabBarController.swift in Sources */,
+				8C107F62298109F0008756B2 /* CupViewModel.swift in Sources */,
 				8CB9DD2A297980FC0012713B /* TabBarController+Extension.swift in Sources */,
 				8CB9DD2F2979AB870012713B /* RankViewController.swift in Sources */,
 				8C8DBC7C2975B88E007895E3 /* NewsView.swift in Sources */,
+				8C107F6629836294008756B2 /* NoPlanTableViewCell.swift in Sources */,
 				8C107F4C297EF761008756B2 /* PlanView.swift in Sources */,
+				8C107F6429823A14008756B2 /* PlanTableViewCell.swift in Sources */,
 				8C8DBC89297688EA007895E3 /* ReusableProtocol.swift in Sources */,
 				8C8DBC542975B429007895E3 /* AppDelegate.swift in Sources */,
+				8C107F5D2981076C008756B2 /* Contest.swift in Sources */,
+				8C107F592980F726008756B2 /* CupViewController.swift in Sources */,
 				8CB9DD3C297A96A30012713B /* RankViewModel.swift in Sources */,
 				8C107F562980AB4D008756B2 /* Match.swift in Sources */,
 				8C8DBC6C2975B4DE007895E3 /* NewsViewModel.swift in Sources */,
@@ -477,6 +521,8 @@
 				DEVELOPMENT_TEAM = MZV9V5LY2T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FootballNews/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "일일일축";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -487,7 +533,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tason.FootballNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -509,6 +555,8 @@
 				DEVELOPMENT_TEAM = MZV9V5LY2T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FootballNews/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "일일일축";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -519,7 +567,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tason.FootballNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -555,6 +603,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8C107F5E298109E7008756B2 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		8C107F672983681E008756B2 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.5.0;
+			};
+		};
+		8C107F6D2983B43F008756B2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		8C8DBC732975B6B9007895E3 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -590,6 +662,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8C107F5F298109E7008756B2 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C107F5E298109E7008756B2 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		8C107F682983681E008756B2 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C107F672983681E008756B2 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		8C107F6E2983B43F008756B2 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C107F6D2983B43F008756B2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
 		8C8DBC742975B6B9007895E3 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8C8DBC732975B6B9007895E3 /* XCRemoteSwiftPackageReference "RxSwift" */;

@@ -12,61 +12,79 @@ class RankCellView: BaseView {
     
     let rankLabel: UILabel = {
         let view = UILabel()
+        view.textColor = .white
         view.textAlignment = .center
         view.adjustsFontSizeToFitWidth = true
+        view.font = .boldSystemFont(ofSize: 17)
         return view
     }()
     
     let nameLabel: UILabel = {
         let view = UILabel()
+        view.textColor = .white
         view.textAlignment = .center
         view.adjustsFontSizeToFitWidth = true
+        view.font = .boldSystemFont(ofSize: 17)
         return view
     }()
     
     let playCntLabel: UILabel = {
         let view = UILabel()
+        view.textColor = .systemGray
         view.textAlignment = .center
         view.adjustsFontSizeToFitWidth = true
+        view.font = .boldSystemFont(ofSize: 17)
         return view
     }()
     
     let winCntLabel: UILabel = {
         let view = UILabel()
+        view.textColor = .white
         view.textAlignment = .center
         view.adjustsFontSizeToFitWidth = true
+        view.font = .boldSystemFont(ofSize: 17)
         return view
     }()
     
     let drawCntLabel: UILabel = {
         let view = UILabel()
+        view.textColor = .white
         view.textAlignment = .center
         view.adjustsFontSizeToFitWidth = true
+        view.font = .boldSystemFont(ofSize: 17)
         return view
     }()
     
     let lostCntLabel: UILabel = {
         let view = UILabel()
+        view.textColor = .white
         view.textAlignment = .center
         view.adjustsFontSizeToFitWidth = true
+        view.font = .boldSystemFont(ofSize: 17)
         return view
     }()
     
     let goalCalCntLabel: UILabel = {
         let view = UILabel()
+        view.textColor = .systemGray
         view.textAlignment = .center
         view.adjustsFontSizeToFitWidth = true
+        view.font = .boldSystemFont(ofSize: 17)
         return view
     }()
     
     let scoreLabel: UILabel = {
         let view = UILabel()
+        view.textColor = .white
         view.textAlignment = .center
         view.adjustsFontSizeToFitWidth = true
+        view.font = .boldSystemFont(ofSize: 17)
         return view
     }()
     
     override func configureUI() {
+        
+        backgroundColor = #colorLiteral(red: 0.09584122475, green: 0.09584122475, blue: 0.09584122475, alpha: 1)
         
         [rankLabel, nameLabel, scoreLabel, playCntLabel, winCntLabel, drawCntLabel, lostCntLabel, goalCalCntLabel].forEach {
             addSubview($0)

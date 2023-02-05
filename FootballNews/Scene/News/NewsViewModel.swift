@@ -5,10 +5,11 @@
 //  Created by 김태현 on 2023/01/17.
 //
 
-import Foundation
+import UIKit
 import RxCocoa
 import RxSwift
 import SwiftSoup
+import Toast
 
 class NewsViewModel {
     
@@ -27,9 +28,14 @@ class NewsViewModel {
         return Output(selectCell: input.selectCell)
     }
     
-    func getNews() {
+    func getNews(vc: UIViewController) {
         
         DispatchQueue.global().async { [self] in
+            
+            DispatchQueue.main.sync {
+    
+                vc.view.makeToastActivity(.center)
+            }
             
             let url = FootballAPI.newsBase.url
             do {
@@ -50,9 +56,19 @@ class NewsViewModel {
                 newsList.onNext(list)
                 
             } catch let error {
-                print("error: ---- \(error)")
+                DispatchQueue.main.sync {
+        
+                    let alert = UIAlertController(title: "인터넷 오류", message: "인터넷 통신에 오류가 발생하였습니다.\n잠시후 다시 시도해주십시오.", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(ok)
+                    vc.present(alert, animated: true)
+                }
+            }
+            
+            DispatchQueue.main.sync {
+    
+                vc.view.hideToastActivity()
             }
         }
-        
     }
 }

@@ -1,8 +1,8 @@
 //
-//  NewsViewController.swift
+//  CupViewController.swift
 //  FootballNews
 //
-//  Created by 김태현 on 2023/01/17.
+//  Created by 김태현 on 2023/01/25.
 //
 
 import UIKit
@@ -11,17 +11,19 @@ import RxSwift
 import SafariServices
 import GoogleMobileAds
 
-class NewsViewController: BaseViewController {
+class CupViewController: BaseViewController {
     
     var bannerView: GADBannerView!
     
-    let mainView = NewsView()
+    let viewModel = CupViewModel()
     
-    let viewModel = NewsViewModel()
+    let mainView = CupView()
     
     let disposeBag = DisposeBag()
     
     override func loadView() {
+        super.loadView()
+        
         view = mainView
     }
     
@@ -39,72 +41,46 @@ class NewsViewController: BaseViewController {
         
         bannerView.delegate = self
         
-        
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko")
-        formatter.dateFormat = "M/d (E)"
-        
-        let title = formatter.string(from: Date())
-        
-        navigationItem.title = title
+        navigationItem.title = "국제대회"
         navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance()
-
+        
+        mainView.cupTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
         bind()
-        newsTableViewConfigure()
-        viewModel.getNews(vc: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = #colorLiteral(red: 0.08201111469, green: 0.08201111469, blue: 0.08201111469, alpha: 1)
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     func bind() {
         
-        let input = NewsViewModel.Input(selectCell: mainView.newsTableView.rx.modelSelected(News.self))
+        let input = CupViewModel.Input(selectTap: mainView.cupTableView.rx.modelSelected(Contest.self))
         let output = viewModel.transform(input: input)
         
-        viewModel.newsList
-            .bind(to: mainView.newsTableView.rx.items(cellIdentifier: NewsTableViewCell.reuseIdentifier, cellType: NewsTableViewCell.self)) { (row, element, cell) in
+        viewModel.contestList
+            .bind(to: mainView.cupTableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
             
-                cell.textLabel?.text = element.title
-                cell.textLabel?.textColor = .white
-                
-                if [0, 1, 2, 3, 4].contains((row % 10)) {
-                    cell.designZeroToFourCell()
-                } else {
-                    cell.designFiveToNineCell()
-                }
+                cell.textLabel?.text = element.name
+                cell.selectionStyle = .none
             }
             .disposed(by: disposeBag)
         
-        output.selectCell
+        output.selectTap
             .withUnretained(self)
-            .subscribe { (vc, news) in
-                let safariViewController = SFSafariViewController(url: news.url)
+            .subscribe { (vc, contest) in
+                let safariViewController = SFSafariViewController(url: contest.url)
                 vc.present(safariViewController, animated: true, completion: nil)
             }
             .disposed(by: disposeBag)
+
     }
     
-    func newsTableViewConfigure() {
-        mainView.newsTableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.reuseIdentifier)
-    }
-        
 }
 
-extension NewsViewController: GADBannerViewDelegate {
+extension CupViewController: GADBannerViewDelegate {
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false

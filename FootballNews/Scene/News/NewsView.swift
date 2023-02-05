@@ -12,8 +12,9 @@ class NewsView: BaseView {
     
     let newsTableView: UITableView = {
         let view = UITableView()
-        view.rowHeight = 60
-        view.separatorStyle = .none
+        view.rowHeight = 48
+//        view.separatorStyle = .none
+//        view.backgroundColor = .black
         return view
     }()
     
@@ -31,4 +32,5 @@ class NewsView: BaseView {
         }
         
     }
+    
 }

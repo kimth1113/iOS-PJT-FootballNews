@@ -1,33 +1,29 @@
 //
-//  PlanView.swift
+//  CupView.swift
 //  FootballNews
 //
-//  Created by 김태현 on 2023/01/24.
+//  Created by 김태현 on 2023/01/25.
 //
 
 import UIKit
 import SnapKit
 
-class PlanView: BaseView {
+class CupView: BaseView {
     
-    let planTableView: UITableView = {
+    let cupTableView: UITableView = {
         let view = UITableView()
-        
         return view
     }()
     
     override func configureUI() {
-        
-        [planTableView].forEach {
+        [cupTableView].forEach {
             addSubview($0)
         }
     }
     
     override func setConstraint() {
-        
-        planTableView.snp.makeConstraints { make in
+        cupTableView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }
     }
 }
-

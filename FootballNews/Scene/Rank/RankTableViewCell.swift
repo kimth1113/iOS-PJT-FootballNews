@@ -32,4 +32,20 @@ class RankTableViewCell: BaseTableViewCell {
             make.edges.equalTo(self)
         }
     }
+    
+    func designChams() {
+        rankCellView.rankLabel.textColor = .systemRed
+    }
+    
+    func designEuropa() {
+        rankCellView.rankLabel.textColor = .systemBlue
+    }
+    
+    func designMinor() {
+        rankCellView.rankLabel.textColor = .darkGray
+    }
+    
+    func designDefault() {
+        rankCellView.rankLabel.textColor = .white
+    }
 }

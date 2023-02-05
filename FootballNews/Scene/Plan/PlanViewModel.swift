@@ -5,13 +5,28 @@
 //  Created by 김태현 on 2023/01/25.
 //
 
-import Foundation
+import UIKit
 import RxCocoa
 import RxDataSources
 import RxSwift
 import SwiftSoup
 
 class PlanViewModel {
+    
+    struct Input {
+        let rightBarButtonTap: ControlEvent<()>?
+        let leftBarButtonTap: ControlEvent<()>?
+    }
+    
+    struct Output {
+        let rightBarButtonTap: ControlEvent<()>?
+        let leftBarButtonTap: ControlEvent<()>?
+    }
+    
+    func trasform(input: Input) -> Output {
+        
+        return Output(rightBarButtonTap: input.rightBarButtonTap, leftBarButtonTap: input.leftBarButtonTap)
+    }
     
     var sections = BehaviorSubject(value: [
         MatchSection(header: "프리미어리그", items: []),
@@ -28,24 +43,39 @@ class PlanViewModel {
     ])
     
     // 날짜 변경 시 마다 실행 (모든 리그 크롤링)
-    func getPlan(date: [String]) {
+    func getPlan(vc: UIViewController, date: [String]) {
         
-        sections.onNext([
-            getLeaguePlan(league: "epl", date: date),
-            getLeaguePlan(league: "primera", date: date),
-            getLeaguePlan(league: "bundesliga", date: date),
-            getLeaguePlan(league: "serie", date: date),
-            getLeaguePlan(league: "ligue1", date: date),
-            getLeaguePlan(league: "champs", date: date),
-            getLeaguePlan(league: "europa", date: date),
-            getLeaguePlan(league: "uecl", date: date),
-            getLeaguePlan(league: "facup", date: date),
-            getLeaguePlan(league: "carlingcup", date: date),
-            getLeaguePlan(league: "copadelrey", date: date)
-        ])
+        DispatchQueue.global().async { [self] in
+            
+            DispatchQueue.main.sync {
+                vc.view.makeToastActivity(.center)
+                vc.navigationItem.rightBarButtonItem?.isEnabled = false
+                vc.navigationItem.leftBarButtonItem?.isEnabled = false
+            }
+            
+            sections.onNext([
+                getLeaguePlan(league: "epl", date: date),
+                getLeaguePlan(league: "primera", date: date),
+                getLeaguePlan(league: "bundesliga", date: date),
+                getLeaguePlan(league: "seria", date: date),
+                getLeaguePlan(league: "ligue1", date: date),
+                getLeaguePlan(league: "champs", date: date),
+                getLeaguePlan(league: "europa", date: date),
+                getLeaguePlan(league: "uecl", date: date),
+                getLeaguePlan(league: "facup", date: date),
+                getLeaguePlan(league: "carlingcup", date: date),
+                getLeaguePlan(league: "copadelrey", date: date)
+            ])
+            
+            DispatchQueue.main.sync {
+                vc.view.hideToastActivity()
+                vc.navigationItem.rightBarButtonItem?.isEnabled = true
+                vc.navigationItem.leftBarButtonItem?.isEnabled = true
+            }
+        }
     }
     
-    func getLeaguePlan(league: String, date: [String]) -> MatchSection {
+    private func getLeaguePlan(league: String, date: [String]) -> MatchSection {
         
         var header: String = ""
         switch league {
@@ -55,7 +85,7 @@ class PlanViewModel {
                 header = "라리가"
             case "bundesliga":
                 header = "분데스리가"
-            case "serie":
+            case "seria":
                 header = "세리에"
             case "ligue1":
                 header = "리그앙"
@@ -128,8 +158,8 @@ class PlanViewModel {
                         state: dicData["state"] as? String,
                         homeTeamName: dicData["homeTeamName"] as? String,
                         awayTeamName: dicData["awayTeamName"] as? String,
-                        homeTeamEmblem: dicData["homeTeamEmblem"] as? String,
-                        awayTeamEmblem: dicData["awayTeamEmblem"] as? String,
+                        homeTeamEmblem: dicData["homeTeamEmblem64URI"] as? String,
+                        awayTeamEmblem: dicData["awayTeamEmblem64URI"] as? String,
                         homeTeamScore: dicData["homeTeamScore"] as? String,
                         awayTeamScore: dicData["awayTeamScore"] as? String,
                         homeTeamWon: dicData["homeTeamWon"] as? String,
