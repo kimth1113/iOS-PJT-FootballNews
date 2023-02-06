@@ -16,7 +16,7 @@
 
 ### **2. 앱 UI/UX**
 
-![주요화면](readme.assets/주요화면.png)
+![mainScreen](readme.assets/mainScreen.png)
 
 초기 피그마 링크 : https://www.figma.com/file/Jz2dQgYTPPZ9pM8m764dSX/
 
