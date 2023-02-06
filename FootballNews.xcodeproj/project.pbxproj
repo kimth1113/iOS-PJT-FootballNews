@@ -23,6 +23,7 @@
 		8C107F6629836294008756B2 /* NoPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C107F6529836294008756B2 /* NoPlanTableViewCell.swift */; };
 		8C107F692983681E008756B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8C107F682983681E008756B2 /* Kingfisher */; };
 		8C107F6F2983B43F008756B2 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 8C107F6E2983B43F008756B2 /* GoogleMobileAds */; };
+		8C19803A2990072600811FFC /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1980392990072600811FFC /* APIResource.swift */; };
 		8C8DBC542975B429007895E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DBC532975B429007895E3 /* AppDelegate.swift */; };
 		8C8DBC562975B429007895E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8DBC552975B429007895E3 /* SceneDelegate.swift */; };
 		8C8DBC5B2975B429007895E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C8DBC592975B429007895E3 /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 		8C107F61298109F0008756B2 /* CupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupViewModel.swift; sourceTree = "<group>"; };
 		8C107F6329823A14008756B2 /* PlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
 		8C107F6529836294008756B2 /* NoPlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPlanTableViewCell.swift; sourceTree = "<group>"; };
+		8C1980392990072600811FFC /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
 		8C8DBC502975B429007895E3 /* FootballNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootballNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8DBC532975B429007895E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C8DBC552975B429007895E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				8CB9DD2C2979A6B20012713B /* EndPoint.swift */,
+				8C1980392990072600811FFC /* APIResource.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				8C8DBC6A2975B4D4007895E3 /* NewsViewController.swift in Sources */,
 				8C8DBC702975B55B007895E3 /* BaseViewController.swift in Sources */,
 				8C107F4A297EF739008756B2 /* PlanViewController.swift in Sources */,
+				8C19803A2990072600811FFC /* APIResource.swift in Sources */,
 				8C107F43297DE382008756B2 /* Rank.swift in Sources */,
 				8CB9DD2D2979A6B20012713B /* EndPoint.swift in Sources */,
 				8C8DBC872975C2F2007895E3 /* NewsTableViewCell.swift in Sources */,
@@ -519,6 +523,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MZV9V5LY2T;
+				GADApplicationIdentifier = "ca-app-pub-2896374758725729~6263332464";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FootballNews/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "일일일축";
@@ -553,6 +558,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MZV9V5LY2T;
+				GADApplicationIdentifier = "ca-app-pub-2896374758725729~6263332464";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FootballNews/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "일일일축";

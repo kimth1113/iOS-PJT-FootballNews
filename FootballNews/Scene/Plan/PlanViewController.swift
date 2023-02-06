@@ -90,7 +90,7 @@ class PlanViewController: BaseViewController {
         bannerView = GADBannerView(adSize: GADAdSizeBanner)
         
         addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-2896374758725729/7337305637"
+        bannerView.adUnitID = APIResouce.adUnitID
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
