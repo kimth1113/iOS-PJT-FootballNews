@@ -16,7 +16,7 @@
 
 ### **2. 앱 UI/UX**
 
-![image-20230206215854350](/Users/tason/Library/Application Support/typora-user-images/image-20230206215854350.png)
+![주요화면](/Users/tason/Desktop/SeSAC/축구뉴스/FootballNews/readme.assets/주요화면.png)
 
 초기 피그마 링크 : https://www.figma.com/file/Jz2dQgYTPPZ9pM8m764dSX/
 
