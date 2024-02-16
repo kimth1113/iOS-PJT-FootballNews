@@ -124,7 +124,7 @@ class RankViewController: BaseViewController {
                 case 1:
                     if [0, 1, 2, 3].contains(row) {
                         cell.designChams()
-                    } else if [4, 5, 6].contains(row) {
+                    } else if [4, 5].contains(row) {
                         cell.designEuropa()
                     } else if [17, 18, 19].contains(row) {
                         cell.designMinor()
@@ -134,7 +134,7 @@ class RankViewController: BaseViewController {
                 case 2:
                     if [0, 1, 2, 3].contains(row) {
                         cell.designChams()
-                    } else if [4, 5, 6].contains(row) {
+                    } else if [4, 5].contains(row) {
                         cell.designEuropa()
                     } else if [16, 17].contains(row) {
                         cell.designMinor()
@@ -152,11 +152,11 @@ class RankViewController: BaseViewController {
                         cell.designDefault()
                     }
                 case 4:
-                    if [0, 1].contains(row) {
+                    if [0, 1, 2, 3].contains(row) {
                         cell.designChams()
-                    } else if [2, 3].contains(row) {
+                    } else if [4].contains(row) {
                         cell.designEuropa()
-                    } else if [18, 19].contains(row) {
+                    } else if [15, 16, 17].contains(row) {
                         cell.designMinor()
                     } else {
                         cell.designDefault()
