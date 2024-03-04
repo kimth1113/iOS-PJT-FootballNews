@@ -6,39 +6,38 @@
 //
 
 import UIKit
-import RxCocoa
-import RxSwift
 import SafariServices
+import SnapKit
+import SwiftSoup
 import GoogleMobileAds
 
 class NewsViewController: BaseViewController {
     
-    var bannerView: GADBannerView!
-    
     let mainView = NewsView()
     
-    let viewModel = NewsViewModel()
+    var newsItems: [News] = [] {
+        didSet {
+            self.mainView.newsTableView.reloadData()
+        }
+    }
     
-    let disposeBag = DisposeBag()
+    var bannerView: GADBannerView!
     
     override func loadView() {
+        
         view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // In this case, we instantiate the banner with desired ad size.
-        // 배너 사이즈
-        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        setBannerView()
         
-        addBannerViewToView(bannerView)
-        bannerView.adUnitID = APIResouce.adUnitID
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        let refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshNews), for: .valueChanged)
+            mainView.newsTableView.refreshControl = refreshControl
         
-        bannerView.delegate = self
-        
+        newsTableViewConfigure()
         
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko")
@@ -49,9 +48,7 @@ class NewsViewController: BaseViewController {
         navigationItem.title = title
         navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance()
 
-        bind()
-        newsTableViewConfigure()
-        viewModel.getNews(vc: self)
+        getNews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,64 +67,164 @@ class NewsViewController: BaseViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
-    func bind() {
-        
-        let input = NewsViewModel.Input(selectCell: mainView.newsTableView.rx.modelSelected(News.self))
-        let output = viewModel.transform(input: input)
-        
-        viewModel.newsList
-            .bind(to: mainView.newsTableView.rx.items(cellIdentifier: NewsTableViewCell.reuseIdentifier, cellType: NewsTableViewCell.self)) { (row, element, cell) in
-            
-                cell.textLabel?.text = element.title
-                cell.textLabel?.textColor = .white
-                
-                if [0, 1, 2, 3, 4].contains((row % 10)) {
-                    cell.designZeroToFourCell()
-                } else {
-                    cell.designFiveToNineCell()
-                }
-            }
-            .disposed(by: disposeBag)
-        
-        output.selectCell
-            .withUnretained(self)
-            .subscribe { (vc, news) in
-                let safariViewController = SFSafariViewController(url: news.url)
-                vc.present(safariViewController, animated: true, completion: nil)
-            }
-            .disposed(by: disposeBag)
+    @objc func refreshNews() {
+        // 뉴스 새로고침 로직 구현
+        mainView.newsTableView.refreshControl?.endRefreshing()
     }
     
     func newsTableViewConfigure() {
+        mainView.newsTableView.delegate = self
+        mainView.newsTableView.dataSource = self
         mainView.newsTableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.reuseIdentifier)
     }
+    
+    func setBannerView() {
         
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
+        bannerView.delegate = self
+    }
+}
+
+extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return newsItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 88 // 적절한 셀 높이 설정
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.reuseIdentifier, for: indexPath) as? NewsTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        let newsItem = newsItems[indexPath.row]
+        cell.configure(with: newsItem, at: indexPath.row)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        var newsItem = newsItems[indexPath.row]
+        
+        newsItem.urlString.removeFirst()
+        newsItem.urlString.removeFirst()
+        newsItem.urlString.removeFirst()
+        newsItem.urlString.removeFirst()
+        newsItem.urlString.removeFirst()
+        
+    
+        let urlString = newsItem.urlString
+        
+        var newsData: [String] = []
+
+        // oid와 aid에 해당하는 숫자 값을 추출하기 위한 정규 표현식
+        let pattern = "oid=(\\d+)&aid=(\\d+)"
+
+        // 정규 표현식 객체 생성
+        let regex = try? NSRegularExpression(pattern: pattern, options: [])
+        
+        if let match = regex?.firstMatch(in: urlString, options: [], range: NSRange(urlString.startIndex..., in: urlString)) {
+            // oid에 해당하는 숫자 추출
+            if let oidRange = Range(match.range(at: 1), in: urlString) {
+                
+                let oid = String(urlString[oidRange])
+                newsData.append(oid)
+         
+            }
+            
+            if let aidRange = Range(match.range(at: 2), in: urlString) {
+                
+                let aid = String(urlString[aidRange])
+                newsData.append(aid)
+         
+            }
+        }
+        
+        guard let combinedURL = URL(string: "https://n.news.naver.com/sports/wfootball/article/\(newsData[0])/\(newsData[1])") else { return }
+        
+        let safariViewController = SFSafariViewController(url: combinedURL)
+        present(safariViewController, animated: true)
+    }
+}
+
+
+extension NewsViewController {
+    
+    
+    func getNews() {
+            DispatchQueue.global().async { [weak self] in
+                guard let self = self else { return }
+                let url = FootballAPI.newsBase.url
+                do {
+                    let html = try String(contentsOf: url, encoding: .utf8)
+                    let doc: Document = try SwiftSoup.parse(html)
+                    let newsInfoList: Elements = try doc.select(".home_news_list").select("a")
+                    
+                    var items: [News] = []
+                    for element in newsInfoList.array() {
+                        let title = try element.select("span").text()
+                        let urlString = try element.attr("href")
+//                        guard let url = URL(string: urlString) else { continue }
+                        items.append(News(title: title, urlString: urlString))
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.newsItems = items
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        self.presentErrorAlert()
+                    }
+                }
+            }
+        }
+        
+        func presentErrorAlert() {
+            let alert = UIAlertController(title: "인터넷 오류", message: "인터넷 통신에 오류가 발생하였습니다.\n잠시후 다시 시도해주십시오.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(ok)
+            present(alert, animated: true)
+        }
 }
 
 extension NewsViewController: GADBannerViewDelegate {
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        view.addConstraints(
-          [NSLayoutConstraint(item: bannerView,
-                              attribute: .bottom,
-                              relatedBy: .equal,
-                              toItem: bottomLayoutGuide,
-                              attribute: .top,
-                              multiplier: 1,
-                              constant: 0),
-           NSLayoutConstraint(item: bannerView,
-                              attribute: .centerX,
-                              relatedBy: .equal,
-                              toItem: view,
-                              attribute: .centerX,
-                              multiplier: 1,
-                              constant: 0)
-          ])
-       }
+            view.addSubview(bannerView)
+            view.addConstraints(
+              [NSLayoutConstraint(item: bannerView,
+                                  attribute: .bottom,
+                                  relatedBy: .equal,
+                                  toItem: view.safeAreaLayoutGuide,
+                                  attribute: .bottom,
+                                  multiplier: 1,
+                                  constant: 0),
+               NSLayoutConstraint(item: bannerView,
+                                  attribute: .centerX,
+                                  relatedBy: .equal,
+                                  toItem: view,
+                                  attribute: .centerX,
+                                  multiplier: 1,
+                                  constant: 0)
+              ])
+    }
     
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        addBannerViewToView(bannerView)
+        bannerView.alpha = 0
+          UIView.animate(withDuration: 1, animations: {
+            bannerView.alpha = 1
+          })
         print("bannerViewDidReceiveAd")
     }
 

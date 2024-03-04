@@ -41,7 +41,7 @@ extension FootballAPI {
             let urlString = (baseURLString + league.rawValue).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: urlString)!
         case .plan(let league, let date):
-            let urlString = (baseURLString + "year=\(date[0])&month=\(date[1])&category=\(league)&date=\(date[0])\(date[1])\(date[2])")
+            let urlString = (baseURLString + "date=\(date[0])\(date[1])\(date[2])")
             return URL(string: urlString)!
         }
     }

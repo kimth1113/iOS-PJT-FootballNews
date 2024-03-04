@@ -10,17 +10,16 @@ import RxDataSources
 
 struct Match {
     
-    let categoryName: String
+    var categoryName: String = "경기없음"
     let gameStartTime: String?
     let state: String?
     let homeTeamName: String?
     let awayTeamName: String?
-    let homeTeamEmblem: String?
-    let awayTeamEmblem: String?
     let homeTeamScore: String?
     let awayTeamScore: String?
     let homeTeamWon: String?
     let awayTeamWon: String?
+    let detailUrl: String?
 }
 
 struct MatchSection {
@@ -30,14 +29,6 @@ struct MatchSection {
     
     init(header: String, items: [Match]) {
         self.header = header
-        self.items = items
-    }
-}
-
-extension MatchSection: SectionModelType {
-    
-    init(original: MatchSection, items: [Match]) {
-        self = original
         self.items = items
     }
 }
