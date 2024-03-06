@@ -30,16 +30,7 @@ class CupViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // In this case, we instantiate the banner with desired ad size.
-        // 배너 사이즈
-        bannerView = GADBannerView(adSize: GADAdSizeBanner)
-        
-        addBannerViewToView(bannerView)
-        bannerView.adUnitID = APIResouce.adUnitID
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        
-        bannerView.delegate = self
+        setBannerView()
         
         navigationItem.title = "국제대회"
         navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance()
@@ -78,32 +69,47 @@ class CupViewController: BaseViewController {
 
     }
     
+    func setBannerView() {
+        
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        
+        bannerView.adUnitID = APIResouce.adUnitID
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
+        bannerView.delegate = self
+    }
 }
 
 extension CupViewController: GADBannerViewDelegate {
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        view.addConstraints(
-          [NSLayoutConstraint(item: bannerView,
-                              attribute: .bottom,
-                              relatedBy: .equal,
-                              toItem: bottomLayoutGuide,
-                              attribute: .top,
-                              multiplier: 1,
-                              constant: 0),
-           NSLayoutConstraint(item: bannerView,
-                              attribute: .centerX,
-                              relatedBy: .equal,
-                              toItem: view,
-                              attribute: .centerX,
-                              multiplier: 1,
-                              constant: 0)
-          ])
-       }
+            view.addSubview(bannerView)
+            view.addConstraints(
+              [NSLayoutConstraint(item: bannerView,
+                                  attribute: .bottom,
+                                  relatedBy: .equal,
+                                  toItem: view.safeAreaLayoutGuide,
+                                  attribute: .bottom,
+                                  multiplier: 1,
+                                  constant: 0),
+               NSLayoutConstraint(item: bannerView,
+                                  attribute: .centerX,
+                                  relatedBy: .equal,
+                                  toItem: view,
+                                  attribute: .centerX,
+                                  multiplier: 1,
+                                  constant: 0)
+              ])
+    }
     
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        addBannerViewToView(bannerView)
+        bannerView.alpha = 0
+          UIView.animate(withDuration: 1, animations: {
+            bannerView.alpha = 1
+          })
         print("bannerViewDidReceiveAd")
     }
 
@@ -127,3 +133,4 @@ extension CupViewController: GADBannerViewDelegate {
       print("bannerViewDidDismissScreen")
     }
 }
+

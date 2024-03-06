@@ -8,6 +8,7 @@
 import UIKit
 import SafariServices
 import SwiftSoup
+import GoogleMobileAds
 
 class PlanViewController: BaseViewController {
     
@@ -22,6 +23,8 @@ class PlanViewController: BaseViewController {
         }
     }
     
+    var bannerView: GADBannerView!
+    
     override func loadView() {
         super.loadView()
         
@@ -30,6 +33,8 @@ class PlanViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setBannerView()
         
         setupUI()
         
@@ -59,6 +64,17 @@ class PlanViewController: BaseViewController {
         navigationController?.navigationBar.tintColor = .darkGray
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right.circle.fill"), style: .plain, target: self, action: #selector(nextDay))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left.circle.fill"), style: .plain, target: self, action: #selector(previousDay))
+    }
+    
+    func setBannerView() {
+        
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        
+        bannerView.adUnitID = APIResouce.adUnitID
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
+        bannerView.delegate = self
     }
     
     @objc private func nextDay() {
@@ -407,5 +423,58 @@ extension PlanViewController {
         
         task.resume()
         
+    }
+}
+
+extension PlanViewController: GADBannerViewDelegate {
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(bannerView)
+            view.addConstraints(
+              [NSLayoutConstraint(item: bannerView,
+                                  attribute: .bottom,
+                                  relatedBy: .equal,
+                                  toItem: view.safeAreaLayoutGuide,
+                                  attribute: .bottom,
+                                  multiplier: 1,
+                                  constant: 0),
+               NSLayoutConstraint(item: bannerView,
+                                  attribute: .centerX,
+                                  relatedBy: .equal,
+                                  toItem: view,
+                                  attribute: .centerX,
+                                  multiplier: 1,
+                                  constant: 0)
+              ])
+    }
+    
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        addBannerViewToView(bannerView)
+        bannerView.alpha = 0
+          UIView.animate(withDuration: 1, animations: {
+            bannerView.alpha = 1
+          })
+        print("bannerViewDidReceiveAd")
+    }
+
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+
+    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+      print("bannerViewDidRecordImpression")
+    }
+
+    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillPresentScreen")
+    }
+
+    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillDIsmissScreen")
+    }
+
+    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewDidDismissScreen")
     }
 }
