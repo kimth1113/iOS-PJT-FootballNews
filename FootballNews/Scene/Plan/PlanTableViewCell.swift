@@ -24,12 +24,7 @@ class PlanTableViewCell: BaseTableViewCell {
         return view
     }()
     
-    let homeTeamEmblemImageView: UIImageView = {
-        let view = UIImageView()
-        return view
-    }()
-    
-    let awayTeamEmblemImageView: UIImageView = {
+    let derbyImageView: UIImageView = {
         let view = UIImageView()
         return view
     }()
@@ -38,6 +33,9 @@ class PlanTableViewCell: BaseTableViewCell {
         let view = UILabel()
         view.font = .boldSystemFont(ofSize: 18)
         view.adjustsFontSizeToFitWidth = true
+        view.numberOfLines = 1
+        view.adjustsFontSizeToFitWidth = true
+        view.minimumScaleFactor = 0.5
         return view
     }()
     
@@ -45,6 +43,9 @@ class PlanTableViewCell: BaseTableViewCell {
         let view = UILabel()
         view.font = .boldSystemFont(ofSize: 18)
         view.adjustsFontSizeToFitWidth = true
+        view.numberOfLines = 1
+        view.adjustsFontSizeToFitWidth = true
+        view.minimumScaleFactor = 0.5
         return view
     }()
     
@@ -77,7 +78,7 @@ class PlanTableViewCell: BaseTableViewCell {
     override func configureUI() {
         selectionStyle = .none
         
-        [gameStartTimeLabel, stateLabel, homeTeamEmblemImageView, awayTeamEmblemImageView, homeTeamNameLabel, awayTeamNameLabel, homeTeamScoreLabel, awayTeamScoreLabel, homeLabel, awayLabel].forEach {
+        [gameStartTimeLabel, stateLabel, derbyImageView, homeTeamNameLabel, awayTeamNameLabel, homeTeamScoreLabel, awayTeamScoreLabel, homeLabel, awayLabel].forEach {
             addSubview($0)
         }
     }
@@ -93,29 +94,23 @@ class PlanTableViewCell: BaseTableViewCell {
             make.leading.trailing.equalTo(gameStartTimeLabel).inset(4)
         }
         
-        homeTeamEmblemImageView.snp.makeConstraints { make in
-            make.top.equalTo(gameStartTimeLabel)
-            make.leading.equalTo(gameStartTimeLabel.snp.trailing).offset(16)
+        derbyImageView.snp.makeConstraints { make in
             make.width.height.equalTo(40)
+            make.top.equalTo(gameStartTimeLabel).offset(8)
+            make.leading.equalTo(gameStartTimeLabel.snp.trailing).offset(12)
         }
         
         homeTeamNameLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(homeTeamEmblemImageView)
-            make.leading.equalTo(homeTeamEmblemImageView.snp.trailing)
-            make.trailing.equalTo(homeTeamScoreLabel.snp.leading)
-        }
-        
-        awayTeamEmblemImageView.snp.makeConstraints { make in
-            make.top.equalTo(homeTeamEmblemImageView.snp.bottom)
-            make.leading.equalTo(gameStartTimeLabel.snp.trailing).offset(16)
-            make.width.height.equalTo(homeTeamEmblemImageView)
+            make.top.equalTo(gameStartTimeLabel).offset(4)
+            make.leading.equalTo(derbyImageView.snp.trailing).offset(16)
+            make.trailing.equalTo(homeTeamScoreLabel.snp.leading).offset(-8)
         }
         
         awayTeamNameLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(awayTeamEmblemImageView)
-            make.leading.equalTo(awayTeamEmblemImageView.snp.trailing)
+            make.top.equalTo(homeTeamNameLabel.snp.bottom).offset(12)
+            make.leading.equalTo(derbyImageView.snp.trailing).offset(16)
             make.bottom.equalTo(self).inset(12)
-            make.trailing.equalTo(awayTeamScoreLabel.snp.leading)
+            make.trailing.equalTo(awayTeamScoreLabel.snp.leading).offset(-8)
         }
         
         homeTeamScoreLabel.snp.makeConstraints { make in

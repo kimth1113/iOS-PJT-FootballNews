@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RxDataSources
 
 struct Match {
     

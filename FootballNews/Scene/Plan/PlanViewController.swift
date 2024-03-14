@@ -184,6 +184,7 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
             cell.homeTeamNameLabel.text = match.homeTeamName
             cell.awayTeamNameLabel.text = match.awayTeamName
             
+            var cnt = 2
             if cell.homeTeamNameLabel.text == "토트넘" {
                 cell.homeTeamNameLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 cell.homeTeamNameLabel.text = "토트넘 of Sonny"
@@ -216,41 +217,50 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.homeTeamNameLabel.text = "셀틱 of Oh"
             } else {
                 cell.homeTeamNameLabel.textColor = .white
+                cnt -= 1
             }
             
-            if cell.homeTeamNameLabel.text == "토트넘" {
+            if cell.awayTeamNameLabel.text == "토트넘" {
                 cell.awayTeamNameLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 cell.awayTeamNameLabel.text = "토트넘 of Sonny"
-            } else if cell.homeTeamNameLabel.text == "울버햄튼" {
+            } else if cell.awayTeamNameLabel.text == "울버햄튼" {
                 cell.awayTeamNameLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 cell.awayTeamNameLabel.text = "울버햄튼 of Hwang"
-            } else if cell.homeTeamNameLabel.text == "바이에른 뮌헨" {
+            } else if cell.awayTeamNameLabel.text == "바이에른 뮌헨" {
                 cell.awayTeamNameLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 cell.awayTeamNameLabel.text = "뮌헨 of Monster"
-            } else if cell.homeTeamNameLabel.text == "미트윌란" {
+            } else if cell.awayTeamNameLabel.text == "미트윌란" {
                 cell.awayTeamNameLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 cell.awayTeamNameLabel.text = "미트윌란 of Cho"
-            } else if cell.homeTeamNameLabel.text == "슈투트가르트" {
+            } else if cell.awayTeamNameLabel.text == "슈투트가르트" {
                 cell.awayTeamNameLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 cell.awayTeamNameLabel.text = "슈투트가르트 of Jeong"
-            } else if cell.homeTeamNameLabel.text == "마인츠" {
+            } else if cell.awayTeamNameLabel.text == "마인츠" {
                 cell.awayTeamNameLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 cell.awayTeamNameLabel.text = "마인츠 of Lee"
-            } else if cell.homeTeamNameLabel.text == "브렌트퍼드" {
+            } else if cell.awayTeamNameLabel.text == "브렌트퍼드" {
                 cell.awayTeamNameLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 cell.awayTeamNameLabel.text = "브렌트퍼드 of Kim"
-            } else if cell.homeTeamNameLabel.text == "PSG" {
+            } else if cell.awayTeamNameLabel.text == "PSG" {
                 cell.awayTeamNameLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 cell.awayTeamNameLabel.text = "PSG of Lee"
-            } else if cell.homeTeamNameLabel.text == "츠르베나 즈베즈다" {
+            } else if cell.awayTeamNameLabel.text == "츠르베나 즈베즈다" {
                 cell.awayTeamNameLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 cell.awayTeamNameLabel.text = "츠르베나 즈베즈다 of Hwang"
-            } else if cell.homeTeamNameLabel.text == "셀틱" {
+            } else if cell.awayTeamNameLabel.text == "셀틱" {
                 cell.awayTeamNameLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                 cell.awayTeamNameLabel.text = "셀틱 of Oh"
             } else {
                 cell.awayTeamNameLabel.textColor = .white
+                cnt -= 1
             }
+            
+            if cnt == 2 {
+                cell.derbyImageView.image = UIImage(named: "KoreanDerby")
+            } else {
+                cell.derbyImageView.image = nil
+            }
+            
             return cell
         }
     }
