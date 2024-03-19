@@ -9,6 +9,8 @@ import Foundation
 
 enum APIResouce {
     static let adUnitID = "ca-app-pub-4215883051450022/3064379478"
+//    static let adUnitID = "ca-app-pub-4215883051450022/6107061937" // 새로운 배너
+//    static let adUnitID = "ca-app-pub-3940256099942544/2435281174" // 테스트 배너
     
     static let newsBase = "https://sports.news.naver.com"
 //    static let rankBase = "https://www.goal.com/kr/"
